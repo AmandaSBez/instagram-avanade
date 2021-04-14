@@ -13,14 +13,14 @@ const usuariosController = {
         });
         return res.json(novoUsuario);
     },
-    update: async(req,res) => {
-        let {id} = req.params;
-        let {nome, email, senha} = req.body;
-        
+    update: async (req, res) => {
+        let { id } = req.params;
+        let { nome, email, senha } = req.body;
+
         let usuarioAtualizado = await Usuario.update({
             nome, email, senha
         }, {
-            where: {id}
+            where: { id }
         });
 
         return res.json(usuarioAtualizado);
