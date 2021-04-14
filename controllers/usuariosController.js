@@ -13,18 +13,24 @@ const usuariosController = {
         });
         return res.json(novoUsuario);
     },
-    // update: async(req,res) => {
-    //     Usuario.update({
-    //        let {i}
-    // },
+    update: async(req,res) => {
+        let {id} = req.params;
+        let {nome, email, senha} = req.body;
+        
+        let usuarioAtualizado = await Usuario.update({
+            nome, email, senha
+        }, {
+            where: {id}
+        });
+
+        return res.json(usuarioAtualizado);
+    },
     delete: async(req,res) => {
-        Usuario.destroy({
-            where: {
-                id: 5
-            }
-        }).then((resultado) => {
-            console.log(resultado);
-        })
+        let {id} = req.params;
+        const usuarioDeletado = await Usuario.destroy({
+            where: {id}
+        });
+        return res.json(usuarioDeletado);
     }
 }
 
