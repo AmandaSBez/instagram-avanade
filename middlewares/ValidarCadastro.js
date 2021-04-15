@@ -8,7 +8,7 @@ module.exports = async (req, res, next) => {
         res.status(400).json({ erro: "Email já cadastrado" });
         return;
     } else {
-        if(!email.length) {
+        if (!email.length) {
             res.status(400).json({ erro: "Email não preenchido" });
             return;
         }
@@ -16,7 +16,7 @@ module.exports = async (req, res, next) => {
             res.status(400).json({ erro: "Nome não preenchido" });
             return;
         }
-        if(!senha.length){
+        if (!senha.length) {
             res.status(400).json({ erro: "Senha não preenchido" });
             return;
         }
