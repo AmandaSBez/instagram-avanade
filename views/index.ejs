@@ -10,6 +10,7 @@
 </head>
 
 <body>
+   
     <% for (let post of listaPosts) { %>
         <div class="container">
             <div class="cabeca_post">
@@ -18,7 +19,7 @@
                 <img src="img/icons/more-vertical.svg" alt="Opções" id="img_opcoes">
             </div>
             <article class="posts">
-                <img src="img/publication_example2.jpg" alt="Imagem do Post" id="img_post">
+                <img src= <%= post.img  %>  alt="Imagem do Post" id="img_post">
                 <div class="info_post">
                     <h3>gabrielbrunetti</h3>
                     <p> <%= post.texto %>  </p>
@@ -29,9 +30,13 @@
             </article>
             <div class="lista_cmt">
                 <ol>
-                    <li>Oi! Tirando os problemas, tudo certo!</li>
-                    <li>Oi gente é o !@$!$#%! Meu nome agora é Zé Pequeno</li>
-                    <li>Oi para você tbm!</li>
+                    <% for (let comentario of post.comentarios) { %>
+                    <li> 
+                        <p> <%= comentario.texto %> </p>
+                    </li>
+                    <!-- <li>Oi gente é o !@$!$#%! Meu nome agora é Zé Pequeno</li>
+                    <li>Oi para você tbm!</li> -->
+                    <% } %>
                 </ol>
             </div>
             <div class="add_cmt">
