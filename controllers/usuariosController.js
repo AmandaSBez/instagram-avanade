@@ -6,6 +6,9 @@ const usuariosController = {
         let usuarios = await Usuario.findAll();
         return res.render('usuarios', {listaUsuarios:usuarios});
     },
+    registro: (req, res) => {
+        return res.render('registro');
+    },
     create: async(req,res) => {
         let {nome, email, senha} = req.body;
         let novoUsuario = await Usuario.create({
