@@ -1,11 +1,44 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Instagram</title>
+</head>
+
+<body>
+    <% for (let post of listaPosts) { %>
+        <div class="container">
+            <div class="cabeca_post">
+                <img src="img/avatar-example.png" alt="Foto de perfil" id="img_perfil">
+                <h3>gabrielbrunetti</h3>
+                <img src="img/icons/more-vertical.svg" alt="Opções" id="img_opcoes">
+            </div>
+            <article class="posts">
+                <img src="img/publication_example2.jpg" alt="Imagem do Post" id="img_post">
+                <div class="info_post">
+                    <h3>gabrielbrunetti</h3>
+                    <p> <%= post.texto %>  </p>
+                    <img src="img/icons/heart.svg" alt="dar like" id="icon_heart">
+                    <p id="likes"> <%= post.n_likes%> likes</p>
+                    <p id="data_post">Postado no dia: 16/04/2020</p>
+                </div>
+            </article>
+            <div class="lista_cmt">
+                <ol>
+                    <li>Oi! Tirando os problemas, tudo certo!</li>
+                    <li>Oi gente é o !@$!$#%! Meu nome agora é Zé Pequeno</li>
+                    <li>Oi para você tbm!</li>
+                </ol>
+            </div>
+            <div class="add_cmt">
+                <textarea name="novoComentario" cols="25" rows="2" placeholder="Adicione um comentario"></textarea>
+            </div>
+        </div>
+        <% } %>
+</body>
+
 </html>

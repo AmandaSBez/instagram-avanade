@@ -1,10 +1,21 @@
 const { Post, sequelize } = require('../models'); //requeringo acesso a models para puder fazes as alterações
+const { request } = require('express');
 
 const postsController = {
     index: async (req, res) => {
         let posts = await Post.findAll();
-        return res.json(posts);
+        return res.render('index', { listaPosts: posts });
     },
+    show: async(req, res) => {
+        const { usuarios_id } = req.params;
+
+        const postsUsuario = await Post.findAll({
+        where: {
+            usuarios_id
+        }
+        });
+        return res.json(postsUsuario);
+    },        
     create: async(req,res) => {
         let {texto, img, n_likes, usuarios_id} = req.body;
         let novoPost = await Post.create({
