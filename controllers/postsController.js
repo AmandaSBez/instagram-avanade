@@ -3,7 +3,9 @@ const { request } = require('express');
 
 const postsController = {
     index: async (req, res) => {
-        let posts = await Post.findAll();
+        let posts = await Post.findAll({
+            include: ['usuario', 'comentarios', 'curtiu']
+        });
         return res.render('index', { listaPosts: posts });
     },
     show: async(req, res) => {
