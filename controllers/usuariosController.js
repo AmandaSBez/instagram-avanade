@@ -10,6 +10,9 @@ const usuariosController = {
     registro: (req, res) => {
         return res.render('registro');
     },
+    login: (req,res) => {
+        return res.render('login');
+    },
     create: async(req,res) => {
         let {nome, email, senha} = req.body;
 

@@ -9,5 +9,6 @@ router.put('/:id', usuariosController.update);
 router.delete('/:id', usuariosController.delete);
 
 router.get('/registro', usuariosController.registro);
+router.get('/login', usuariosController.login);
 
 module.exports = router;
