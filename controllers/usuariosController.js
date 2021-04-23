@@ -13,6 +13,20 @@ const usuariosController = {
     login: (req,res) => {
         return res.render('login');
     },
+    auth: async (req, res) => {
+        const {email, senha} = req.body;
+
+        const usuario = await Usuario.findOne({
+            where: {
+                email
+            }
+        });
+
+        if(usuario && bcrypt.compareSync(senha, usuario.senha)) {
+            req.session.usuarioLogado = usuario;  //  criando atributo usuarioLogado
+            return res.redirect('/');
+        }
+    },
     create: async(req,res) => {
         let {nome, email, senha} = req.body;
 
@@ -21,8 +35,9 @@ const usuariosController = {
         let novoUsuario = await Usuario.create({
             nome, email, senha: senhaCrypt
         });
-        res.redirect('/usuarios/login');
-        return res.json(novoUsuario);
+        
+        return res.redirect('/usuarios/login');
+        //res.json(novoUsuario);
     },
     update: async (req, res) => {
         let { id } = req.params;
