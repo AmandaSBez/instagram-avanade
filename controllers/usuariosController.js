@@ -21,6 +21,7 @@ const usuariosController = {
         let novoUsuario = await Usuario.create({
             nome, email, senha: senhaCrypt
         });
+        res.redirect('/usuarios/login');
         return res.json(novoUsuario);
     },
     update: async (req, res) => {
