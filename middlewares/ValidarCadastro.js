@@ -1,7 +1,7 @@
 const { Usuario } = require('../models')
 
 module.exports = async (req, res, next) => {
-    const { email, nome, senha } = req.body
+    const { email, nome, senha } = req.body;
 
     const user = await Usuario.findAll({ where: { email } })
 
